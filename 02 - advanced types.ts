@@ -6,7 +6,7 @@ import {
   Person,
   PhoneNumber
 } from './01 - basic types'
-import Dennis from './DennisNedry.json'
+import { Dennis } from './03 - json import'
 
 // intersection types
 type RocketScientist = Person & IHaveAJob<'Rocket Scientist'>

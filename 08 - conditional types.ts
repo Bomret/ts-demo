@@ -11,15 +11,13 @@ type FunctionsOnly<T> = { [K in keyof T]: T[K] extends Function ? T[K] : never }
 type PersonPropertiesOnly = PropertiesOnly<Person>
 type PersonFunctionsOnly = FunctionsOnly<Person>
 
-declare function getPerson(name: string, cb: Callback<Person>): void
-
-type PromisedFunc<F extends Function> = F extends (
-  cb: Callback<infer R>
-) => void
+type PromisedFunc<F> = F extends (cb: Callback<infer R>) => void
   ? () => Promise<R>
   : F extends (arg: infer A, cb: Callback<infer R>) => void
     ? (arg: A) => Promise<R>
-    : F
+    : never
+
+declare function getPerson(name: string, cb: Callback<Person>): void
 
 function promisify<F extends Function>(f: F): PromisedFunc<F> {
   return utilPromisify(f) as PromisedFunc<F>
