@@ -21,6 +21,7 @@ type RocketScientistJobDescription = Pick<
   'job' | 'employer'
 >
 
+// key signature manipulation
 type OptionalReadonly<T> = { readonly [K in keyof T]?: T[K] }
 type OptionalPerson = OptionalReadonly<Person>
 
@@ -65,4 +66,5 @@ type CandidateWithContactInfo = [Person, Email, PhoneNumber?]
   const maybePhoneNumber: number | undefined = dennisAndContactDetails[2]
 }
 
+// variadic argument inference
 export type Func<Args extends any[], R> = (...args: Args) => R

@@ -1,12 +1,12 @@
 import { promisify as utilPromisify } from 'util'
 import { Callback } from './01 - basic types'
 import { Dennis } from './03 - json import'
-import { Person } from './06- oop'
+import { Person } from './06 - oop'
 
 type PropertiesOnly<T> = {
-  [P in keyof T]: T[P] extends Function ? never : T[P]
+  [K in keyof T]: T[K] extends Function ? never : T[K]
 }
-type FunctionsOnly<T> = { [P in keyof T]: T[P] extends Function ? T[P] : never }
+type FunctionsOnly<T> = { [K in keyof T]: T[K] extends Function ? T[K] : never }
 
 type PersonPropertiesOnly = PropertiesOnly<Person>
 type PersonFunctionsOnly = FunctionsOnly<Person>

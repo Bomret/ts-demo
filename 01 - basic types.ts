@@ -16,7 +16,7 @@ export type Age = number
 export type Email = string
 export type PhoneNumber = number
 export type WithAge = { age: Age }
-export type Greet = (greetee: Person) => string
+export type GetGreeting = (greetee: Person) => string
 export type Callback<R> = (error: any, result: R) => void
 
 // union type
