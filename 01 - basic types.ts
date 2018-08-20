@@ -19,6 +19,13 @@ export type WithAge = { age: Age }
 export type GetGreeting = (greetee: Person) => string
 export type Callback<R> = (error: any, result: R) => void
 
+// enums
+export enum Title {
+  Bachelor,
+  Master,
+  PhD
+}
+
 // union type
 export type Job = 'Software Developer' | 'Rocket Scientist'
 export type ContactInfo = Email | PhoneNumber

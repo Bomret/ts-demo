@@ -1,11 +1,11 @@
 import { promisify as utilPromisify } from 'util'
 import { Callback, Job } from './01 - basic types'
 import { Dennis } from './03 - json import'
-import { Person } from './06 - oop'
+import { Developer, Mary, Person, RocketScientist } from './06 - oop'
 
 // built-in Exclude and Extract types
-type RocketScientist = Exclude<Job, 'Software Developer'>
-type SoftwareDeveloper = Extract<Job, 'Software Developer'>
+type RocketScientistTitle = Exclude<Job, 'Software Developer'>
+type SoftwareDeveloperTitle = Extract<Job, 'Software Developer'>
 
 // applying predicate to all members of T
 type PropertiesOnly<T> = {
@@ -16,7 +16,18 @@ type FunctionsOnly<T> = { [K in keyof T]: T[K] extends Function ? T[K] : never }
 type PersonPropertiesOnly = PropertiesOnly<Person>
 type PersonFunctionsOnly = FunctionsOnly<Person>
 
-// conditional types on a function
+// conditional type as function return value
+// NOTE: for some reason unbeknownst to me you have to cast your return value to 'any' even if the type is correct
+function getJob<TPerson extends Developer | RocketScientist>(
+  person: TPerson
+): TPerson extends Developer ? 'Software Developer' : 'Rocket Scientist' {
+  if (person instanceof Developer) return person.job as any
+  return 'Rocket Scientist' as any
+}
+
+const marysJob: 'Rocket Scientist' = getJob(Mary)
+
+// advanced conditional types on a function
 type PromisedFunc<F> = F extends (cb: Callback<infer R>) => void
   ? () => Promise<R>
   : F extends (arg: infer A, cb: Callback<infer R>) => void

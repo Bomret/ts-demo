@@ -24,13 +24,13 @@ export class Employee<T extends Job> extends Person implements IHaveAJob<T> {
 }
 
 // inheritance
-class Developer extends Employee<'Software Developer'> {
+export class Developer extends Employee<'Software Developer'> {
   constructor(firstname: Name, lastname: Name) {
     super(firstname, lastname, 'Software Developer')
   }
 }
 
-class RocketScientist extends Employee<'Rocket Scientist'> {
+export class RocketScientist extends Employee<'Rocket Scientist'> {
   constructor(firstname: Name, lastname: Name) {
     super(firstname, lastname, 'Rocket Scientist')
   }
@@ -38,7 +38,7 @@ class RocketScientist extends Employee<'Rocket Scientist'> {
 
 // instantiation
 const Dennis = new Developer('Dennis', 'Nedry')
-const Mary = new RocketScientist('Mary', 'Sherman Morgan')
+export const Mary = new RocketScientist('Mary', 'Sherman Morgan')
 
 Mary.greet(Dennis)
 
