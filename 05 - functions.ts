@@ -29,3 +29,15 @@ const letDennisGreet = bindGreeter(Dennis)
 const dennisGreetsJohn = letDennisGreet(johnConnor)
 
 console.log(dennisGreetsJohn)
+
+// assignment assertion
+function initialize(x: number) {
+  x = 2
+}
+
+function main() {
+  let x!: number
+  initialize(x)
+
+  console.log(x)
+}

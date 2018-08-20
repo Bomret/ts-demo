@@ -29,8 +29,9 @@ export interface IHaveNames {
   lastname: Name
 }
 
+// with readonly property
 export interface IHaveAMiddlename {
-  middlename: Name
+  readonly middlename: Name
 }
 
 // with generic type parameter
