@@ -1,6 +1,6 @@
 import { Dennis } from './03 - json import'
 
-// type guard
+// type guard and inline import
 export function isPerson(obj: any): obj is import('./01 - basic types').Person {
   if (typeof obj !== 'object') return false
 
@@ -10,7 +10,7 @@ export function isPerson(obj: any): obj is import('./01 - basic types').Person {
 export function printNameIfPerson(something: unknown): void {
   if (isPerson(something)) {
     console.log(
-      `${something.firstname} ${something.lastname} (${something.firstname})`
+      `${something.firstname} ${something.lastname} (${something.age})`
     )
   }
 }
