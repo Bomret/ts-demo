@@ -3,7 +3,7 @@ import { Dennis } from './03 - json import'
 
 // create intersection type
 export function combine<A, B>(first: A, second: B): A & B {
-  return Object.assign({}, first, second)
+  return { ...first, ...second }
 }
 
 const johnConnor: Person = combine(

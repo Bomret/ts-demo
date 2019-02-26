@@ -1,8 +1,21 @@
 import { IHaveAJob, IHaveNames, Job, Name } from './01 - basic types'
 
+interface CreatePersonParams {
+  firstname: Name
+  lastname: Name
+}
+
 // traditional OOP class
 export class Person implements IHaveNames {
+  static make({ firstname, lastname }: CreatePersonParams) {
+    return new Person(firstname, lastname)
+  }
+
   constructor(public firstname: Name, public lastname: Name) {}
+
+  get fullName() {
+    return `${this.firstname} ${this.lastname}`
+  }
 
   greet(other: Person) {
     console.log(
@@ -11,6 +24,7 @@ export class Person implements IHaveNames {
   }
 }
 
+// inheritance
 export class Employee<T extends Job> extends Person implements IHaveAJob<T> {
   constructor(public firstname: Name, public lastname: Name, public job: T) {
     super(firstname, lastname)
@@ -23,7 +37,6 @@ export class Employee<T extends Job> extends Person implements IHaveAJob<T> {
   }
 }
 
-// inheritance
 export class Developer extends Employee<'Software Developer'> {
   constructor(firstname: Name, lastname: Name) {
     super(firstname, lastname, 'Software Developer')

@@ -2,11 +2,19 @@ import {
   Email,
   IHaveAJob,
   IMayBeEmployed,
+  Keys,
   Name,
   Person,
   PhoneNumber
 } from './01 - basic types'
 import { Dennis } from './03 - json import'
+
+declare function kvp<T extends object, K extends Keys<T>>(
+  model: T,
+  key: K
+): [K, T[K]]
+
+const x = kvp({ bla: 'ha', na: 3 }, 'bla')
 
 // intersection types
 type RocketScientist = Person & IHaveAJob<'Rocket Scientist'>
@@ -30,6 +38,8 @@ type EmptyTuple = []
 {
   const empty: EmptyTuple = []
   type zero = typeof empty.length
+
+  // error
   const nothing: never = empty[0]
 }
 

@@ -55,7 +55,7 @@ export interface IMayBeEmployed {
 export type Person = IHaveNames & WithAge
 
 // keyof operator
-type Keys<T> = keyof T
+export type Keys<T> = keyof T
 
 // unsatisfiable type definition
 type StringAndNumber = string & number

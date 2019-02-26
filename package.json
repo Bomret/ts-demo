@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^10.7.1",
-    "tslint-config-prettier": "^1.14.0",
-    "typescript": "^3.0.1"
+    "@types/node": "^10.12.27",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3333"
   }
 }
