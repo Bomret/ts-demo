@@ -1,4 +1,4 @@
-import { IHaveAJob, IHaveNames, Job, Name } from './01 - basic types'
+import { IHaveJob, IHaveNames, Job, Name } from './01 - basic types'
 
 interface CreatePersonParams {
   firstname: Name
@@ -25,7 +25,7 @@ export class Person implements IHaveNames {
 }
 
 // inheritance
-export class Employee<T extends Job> extends Person implements IHaveAJob<T> {
+export class Employee<T extends Job> extends Person implements IHaveJob<T> {
   constructor(public firstname: Name, public lastname: Name, public job: T) {
     super(firstname, lastname)
   }

@@ -5,10 +5,12 @@ export type JsTypes =
   | number
   | symbol
   | object
+  | null
+  | undefined
   | Date
   | Function
 
-export type SpecialTypes = any | void | null | undefined | never | unknown
+export type SpecialTypes = any | void | never | unknown
 
 // type aliases
 export type Name = string
@@ -42,7 +44,7 @@ export interface IHaveAMiddlename {
 }
 
 // with generic type parameter
-export interface IHaveAJob<T extends Job> {
+export interface IHaveJob<T extends Job> {
   job: T
 }
 

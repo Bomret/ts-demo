@@ -1,4 +1,4 @@
-import { Dennis } from './03 - json import'
+import { Dennis } from './06 - json import'
 
 // type guard and inline import
 export function isPerson(obj: any): obj is import('./01 - basic types').Person {
