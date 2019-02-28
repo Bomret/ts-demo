@@ -4,7 +4,7 @@ import { IHaveJob, IMayBeEmployed, Keys, Person } from './01 - basic types'
 type RocketScientist = Person & IHaveJob<'Rocket Scientist'>
 type MaybeEmployedRocketScientist = RocketScientist & IMayBeEmployed
 
-// built-in types
+// built-in Required and Pick types
 type EmployedRocketScientist = Required<MaybeEmployedRocketScientist>
 
 type RocketScientistJobDescription = Pick<
@@ -16,7 +16,7 @@ type RocketScientistJobDescription = Pick<
 type OptionalReadonly<T> = { readonly [K in keyof T]?: T[K] }
 type OptionalPerson = OptionalReadonly<Person>
 
-// tuples
+// arrays
 declare function getPersonalData(userId: string): Promise<Person>
 
 async function processPersonalData(userIds: string[]): Promise<void> {
@@ -46,6 +46,6 @@ const model = {
 const [key, num] = getPair('numberProp', model)
 
 // variadic argument inference
-declare function silly<Args extends any[]>(...args: Args): void
+declare function silly<Args extends any[]>(...args: Args): Args
 
-silly('hello', 4, true)
+const args: [string, number, boolean] = silly('hello', 4, true)
